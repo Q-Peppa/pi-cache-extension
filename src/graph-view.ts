@@ -27,13 +27,20 @@ export function renderGraphBody(
   theme: Theme,
   metrics: CacheSessionMetrics,
   width: number,
+  modelCost?: { input: number; cacheRead: number },
 ): string[] {
   const messages = metrics.allMessages;
   const lines: string[] = [];
   const totals = metrics.activeBranchTotals;
   const hitRate = summarizeHitPercent(totals);
   const savedTokens = totals.cacheRead;
-  const estimatedSaving = (savedTokens / 1_000_000) * 5; // 估算：每百万token约5美元
+
+  // 使用模型的精确计费，如果没有则回退到估算值
+  // 节省金额 = (缓存读取的token数 / 1_000_000) * (普通输入单价 - 缓存读取单价)
+  // 如果没有模型信息，回退到 $5/百万的估算
+  const inputCost = modelCost?.input ?? 5;
+  const cacheReadCost = modelCost?.cacheRead ?? 0;
+  const estimatedSaving = (savedTokens / 1_000_000) * (inputCost - cacheReadCost);
 
   // ===== 主标题 =====
   lines.push(theme.fg("accent", theme.bold("📊 缓存效率概览")));

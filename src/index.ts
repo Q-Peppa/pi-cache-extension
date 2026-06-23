@@ -15,6 +15,10 @@ export default function cacheGraphExtension(pi: ExtensionAPI): void {
     },
     handler: async (_args, ctx) => {
       let metrics = collectCacheSessionMetrics(ctx.sessionManager);
+      // 获取当前模型的精确计费信息
+      const modelCost = ctx.model?.cost
+        ? { input: ctx.model.cost.input, cacheRead: ctx.model.cost.cacheRead }
+        : undefined;
 
       if (!ctx.hasUI) {
         const totals = metrics.activeBranchTotals;
@@ -31,7 +35,7 @@ export default function cacheGraphExtension(pi: ExtensionAPI): void {
             {
               title: "📊 缓存效率概览",
               helpText: "r 刷新 • ↑/↓ 滚动 • q 关闭",
-              renderBody: (innerWidth) => renderGraphBody(theme, metrics, innerWidth),
+              renderBody: (innerWidth) => renderGraphBody(theme, metrics, innerWidth, modelCost),
               onKey: (data) => {
                 if (data === "r") {
                   metrics = collectCacheSessionMetrics(ctx.sessionManager);
