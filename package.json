@@ -1,0 +1,41 @@
+{
+  "name": "pi-cache-info",
+  "version": "1.0.1",
+  "description": "一个简单友好的 pi 扩展，查看 AI 对话的缓存效率和节省的 Token",
+  "type": "module",
+  "pi": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "scripts": {
+    "dev": "pi -e .",
+    "check": "tsc --noEmit"
+  },
+  "keywords": [
+    "pi-package",
+    "pi-extension",
+    "cache",
+    "tui"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@earendil-works/pi-ai": "*",
+    "@earendil-works/pi-coding-agent": "*",
+    "@earendil-works/pi-tui": "*"
+  },
+  "devDependencies": {
+    "@earendil-works/pi-coding-agent": "^0.79.1",
+    "typescript": "^5.0.0"
+  },
+  "author": "Q-Peppa",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Q-Peppa/pi-cache-info.git"
+  },
+  "files": [
+    "src",
+    "index.ts",
+    "tsconfig.json"
+  ]
+}
