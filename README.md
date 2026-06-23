@@ -1,4 +1,4 @@
-# pi-cache-info 📊
+# pi-cache-extension 📊
 
 一个简单友好的 pi 扩展，帮助你了解 AI 对话的缓存效率。
 
@@ -12,14 +12,14 @@
 在 pi 中使用 GitHub 地址安装：
 
 ```bash
-pi install https://github.com/Q-Peppa/pi-cache-info.git
+pi install https://github.com/Q-Peppa/pi-cache-extension.git
 ```
 
 或本地开发：
 
 ```bash
-git clone https://github.com/Q-Peppa/pi-cache-info.git
-cd pi-cache-info
+git clone https://github.com/Q-Peppa/pi-cache-extension.git
+cd pi-cache-extension
 npm install
 pi -e .
 ```
