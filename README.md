@@ -1,5 +1,8 @@
 # pi-cache-extension 📊
 
+[![npm version](https://img.shields.io/npm/v/pi-cache-extension.svg)](https://www.npmjs.com/package/pi-cache-extension)
+[![license](https://img.shields.io/npm/l/pi-cache-extension.svg)](https://github.com/Q-Peppa/pi-cache-extension/blob/main/LICENSE)
+
 一个简单友好的 pi 扩展，帮助你了解 AI 对话的缓存效率。
 
 ![截图演示](./screenshots/demo.png)
@@ -11,13 +14,21 @@
 
 ## 安装
 
-在 pi 中使用 GitHub 地址安装：
+### 推荐方式：npm 安装
+
+在 pi 中直接安装：
+
+```bash
+pi install npm:pi-cache-extension
+```
+
+### GitHub 地址安装
 
 ```bash
 pi install https://github.com/Q-Peppa/pi-cache-extension.git
 ```
 
-或本地开发：
+### 本地开发：
 
 ```bash
 git clone https://github.com/Q-Peppa/pi-cache-extension.git
