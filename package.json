@@ -1,6 +1,6 @@
 {
   "name": "pi-cache-extension",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "一个简单友好的 pi 扩展，查看 AI 对话的缓存效率和节省的 Token",
   "type": "module",
   "pi": {
