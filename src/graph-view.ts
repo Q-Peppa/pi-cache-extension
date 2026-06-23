@@ -41,6 +41,8 @@ export function renderGraphBody(
   const inputCost = modelCost?.input ?? 5;
   const cacheReadCost = modelCost?.cacheRead ?? 0;
   const estimatedSaving = (savedTokens / 1_000_000) * (inputCost - cacheReadCost);
+  // 检测是否是包月/免费套餐（input 和 cacheRead 都是 0）
+  const isFlatRate = modelCost?.input === 0 && modelCost?.cacheRead === 0;
 
   // ===== 主标题 =====
   lines.push(theme.fg("accent", theme.bold("📊 缓存效率概览")));
@@ -57,7 +59,11 @@ export function renderGraphBody(
   lines.push("");
 
   lines.push(`  ✅ 累计节省 Token：${theme.bold(formatInt(savedTokens))}`);
-  lines.push(`  💰 估算节省金额：${theme.bold(`$${estimatedSaving.toFixed(2)}`)}`);
+  if (isFlatRate) {
+    lines.push(`  💰 估算节省金额：${theme.bold("包月套餐")}`);
+  } else {
+    lines.push(`  💰 估算节省金额：${theme.bold(`$${estimatedSaving.toFixed(2)}`)}`);
+  }
   lines.push(`  📝 对话轮次：${theme.bold(formatInt(totals.assistantMessages))}`);
   lines.push("");
 
