@@ -6,7 +6,8 @@
   "pi": {
     "extensions": [
       "./index.ts"
-    ]
+    ],
+    "image": "https://raw.githubusercontent.com/Q-Peppa/pi-cache-extension/main/screenshots/demo.png"
   },
   "scripts": {
     "dev": "pi -e .",
